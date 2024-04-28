@@ -38,13 +38,14 @@ public class EstudianteController {
         } else if (requestURI.equals("/agregar")) {
             return "Administrador/html/estudiantes/agregar";
         }
-     else if (requestURI.equals("/borrar")) {
-        return "Administrador/html/estudiantes/borrar";
+         else if (requestURI.equals("/borrar")) {
+          return "Administrador/html/estudiantes/borrar";
     }
 
         else if (requestURI.equals("/Principal")) {
             return "Administrador/html/ventanaprincipalAdmin";
         }
+
 
         else if (requestURI.equals("/listar")) {
             return "Administrador/html/estudiantes/lista";
@@ -74,7 +75,7 @@ public class EstudianteController {
         } catch (Exception e) {
             model.addAttribute("error", "Error al eliminar estudiante");
         }
-       return "Administrador/html/estudiantes/borrar";
+       return "Administrador/html/estudiantes/lista";
     }
 
     @PostMapping("/estudiante/crear")

@@ -24,6 +24,8 @@ public class RecursosEducativos {
     private String descripcionRecurso;
     private String autorRecurso;
     private String enlaceRecurso;
+
+
     private byte[] archivoRecurso;
 
 
