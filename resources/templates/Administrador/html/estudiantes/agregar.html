@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/gestionarestudiante.css" />
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/ventanaadminprincipal.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/usuariollamardatos.css" />
+        <script src="/admin/js/barra.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../../../static/CSSPROFESOR/agregar.css" />
+        <script src="../../../../static/Profesor/Estilo/AdminProfesorJS/agregar.js"></script>
+        <link rel="stylesheet" href="/CSSADMIN/bootstrap.css">
+        <link rel="stylesheet" href="/CSSADMIN/forms.css">
+        <script src="/admin/js/filtrado.js"></script>
+
+
+        <title>VENTANA ADMINISTRADOR PRINCIPAL</title>
+    </head>
+
+    <body>
+        <section id="container" >
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                </div>      
+                <a href="Principal" >
+
+                    <br>
+                    <b >VENTANA: ADMINISTRADOR</b>
+                    <b class="visible-xs TextWhite">ADV.TIME</b>
+                </a>
+                <div class="top-menu text-center">
+
+
+                </div>
+            </header>
+            <aside>
+                <div id="sidebar"  class="nav-collapse">
+                    <ul class="sidebar-menu nav">
+                        <li>
+                            <p class="text-center">
+                                <a>
+                                    <img src="../../imagenes/R.jpeg" class="img-circle" width="60">
+                                </a>
+                            </p>
+                            <h5 class="text-center TextWhite">ADMINISTRADOR</h5>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="../ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">PANEL PRINCIPAL</span>
+                            </a>
+                            <ul>
+
+                                <li><a href="../AdministradorRoles.html">ADMINISTRATIVO ROLES</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="sub-menu">
+                            <a href="../ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">ALUMNO</span>
+                            </a>
+                            <ul>
+                              <li><a href="agregar" class="abc">Registrar Nuevo Alumno</a> <br></li>
+                                <li><a href="modificar.html" class="abc">Modificar Alumno</a></li>
+                                <li><a href="lista" class="abc">Listado Alumnos</a></li>
+                                <li><a href="borrar" class="abc">Eliminar Alumnos</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="../ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">Profesor</span>
+                            </a>
+                            <ul>
+                                <li><a href="/profesor/formulario-crear" class="abe">Registrar Nuevo Profesor</a> <br></li>
+                                <li><a href="../admin/TablaAlumno.html" class="abe">Modificar Profesor</a></li>
+                                <li><a href="/profesor/lista" class="abe">Listado Profesor</a></li>
+                                <li><a href="../admin/TablaAlumno.html" class="abe">Eliminar Profesor</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="../TablaMatricula.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Matricular</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a  href="../TablaNotas.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Notas</span>
+                            </a>
+                        </li>            
+                        <li class="sub-menu">
+                            <a  class="active" href="../TablaCurso.html" >
+                                <i class="fa fa-cogs TextWhite"></i>
+                                <span class="TextWhite">Curso</span>
+                            </a>
+                        </li>
+
+
+                        <li class="sub-menu">
+                            <a href="../../index.html" >
+                                <i ></i>
+
+                                <span class="TextWhite">VOLVER</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </aside>
+
+            <section id="main-content">
+
+
+                <div id="main">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <h1 class="mb-4">Agregar Alumno</h1>
+
+                    <form action="#" th:action="@{/estudiante/crear}" th:object="${estudiante}" method="post" class="container mt-3">
+                        <div class="mb-3">
+                            <label for="codigo" class="form-label">Cedula</label>
+                            <input type="text" th:field="*{codigo}" class="form-control" id="codigo" placeholder="Ingrese el código del estudiante" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Ingrese el nombre del estudiante" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" th:field="*{apellido}" class="form-control" id="apellido" placeholder="Ingrese el apellido del estudiante" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" th:field="*{fechaNacimiento}" class="form-control" id="fechaNacimiento" placeholder="Ingrese la fecha de nacimiento" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="genero" class="form-label">Género</label>
+                            <input type="text" th:field="*{genero}" class="form-control" id="genero" placeholder="Ingrese el género" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" th:field="*{dirrecion}" class="form-control" id="direccion" placeholder="Ingrese la dirección" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" th:field="*{telefono}" class="form-control" id="telefono" placeholder="Ingrese el teléfono" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Ingrese el correo electrónico" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="edad" class="form-label">Edad</label>
+                            <input type="number" th:field="*{edad}" class="form-control" id="edad" placeholder="Ingrese la edad" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="acudiente" class="form-label">Acudiente</label>
+                            <input type="text" th:field="*{acudiente}" class="form-control" id="acudiente" placeholder="Ingrese el nombre del acudiente" />
+                        </div>
+                        <div class="d-flex">
+                            <button type="submit" class="btn btn-primary me-2">Crear</button>
+                            <button type="reset" class="btn btn-secondary">Resetear</button>
+                        </div>
+                    </form>
+
+
+
+                    <section class="wrapper">
+
+                    </section>
+                </div>
+            </section>
+        </section>
+
+    </body>
+</html>

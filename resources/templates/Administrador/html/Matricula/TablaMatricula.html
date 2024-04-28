@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/gestionarestudiante.css" />
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/ventanaadminprincipal.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/usuariollamardatos.css" />
+        <script src="../../../../static/admin/js/barra.js"></script>
+        <link rel="stylesheet" href="/CSSADMIN/bootstrap.css">
+        <link rel="stylesheet" href="/CSSADMIN/forms.css">
+        <script src="../../../../static/admin/js/filtrado.js"></script>
+
+        <title>VENTANA ADMINISTRADOR PRINCIPAL</title>
+    </head>
+
+    <body>
+        <section id="container" >
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                </div>      
+                <a href="../ventanaprincipalAdmin.html" >
+
+                    <br>
+                    <b >VENTANA: ADMINISTRADOR</b>
+                    <b class="visible-xs TextWhite">ADV.TIME</b>
+                </a>
+                <div class="top-menu text-center">
+
+
+                </div>
+            </header>
+            <aside>
+                <div id="sidebar"  class="nav-collapse">
+                    <ul class="sidebar-menu nav">
+                        <li>
+                            <p class="text-center">
+                                <a>
+                                    <img src="../../../../static/imagenes/R.jpeg" class="img-circle" width="60">
+                                </a>
+                            </p>
+                            <h5 class="text-center TextWhite">ADMINISTRADOR</h5>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="../ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">PANEL PRINCIPAL</span>
+                            </a>
+                            <ul>
+
+                                <li><a href="../Roles/AdministradorRoles.html">ADMINISTRATIVO ROLES</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li class="sub-menu">
+                            <a href="../ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">ALUMNO</span>
+                            </a>
+                            <ul>
+                                <li><a href="ventanasecundariaalumno/agregar.html"  class="abc">Registrar Nuevo Alumno</a> <br></li>
+                                <li><a href="ventanasecundariaalumno/modificar.html" class="abc">Modificar Alumno</a></li>
+                                <li><a href="TablaAlumno.html" class="abc">Listado Alumnos</a></li>
+                                <li><a href="ventanasecundariaalumno/borrar.html" class="abc">Eliminar Alumnos</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="../ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">Profesor</span>
+                            </a>
+                            <ul>
+                                <li><a href="../profesores/TablaProfesor.html" class="abe">Registrar Nuevo Profesor</a> <br></li>
+                                <li><a href="../admin/TablaAlumno.html" class="abe">Modificar Profesor</a></li>
+                                <li><a href="../profesores/TablaProfesor.html" class="abe">Listado Profesor</a></li>
+                                <li><a href="../admin/TablaAlumno.html" class="abe">Eliminar Profesor</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="TablaMatricula.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Matricular</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a  href="../Notas/TablaNotas.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Notas</span>
+                            </a>
+                        </li>            
+                        <li class="sub-menu">
+                            <a  class="active" href="../Curso/TablaCurso.html" >
+                                <i class="fa fa-cogs TextWhite"></i>
+                                <span class="TextWhite">Curso</span>
+                            </a>
+                        </li>
+
+
+                        <li class="sub-menu">
+                            <a href="../../../../static/index.html" >
+                                <i ></i>
+
+                                <span class="TextWhite">VOLVER</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </aside>
+
+            <section id="main-content">
+
+                <div id="main">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <span class="text1">GESTIONAR MATRÍCULAS</span>
+                    <span class="text2"></span>
+                    <br>
+                    <div id="cuadroDetalles" class="detalle-container">
+                        <div id="detallesTexto" class="detalle-info"></div>
+                    </div>
+
+                    <label for="filtroInput">Buscar por:</label>
+                    <select id="filtroSelect">
+                        <option value="ID_Alumno1">ID Alumno</option>
+                    </select>
+                    <input type="text" id="filtroInput" onkeyup="filtrarTabla()" />
+                    <br>
+                    <br>
+                    <table id="tablaMatricula" class="table table-striped table-bordered">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>estado</th>
+                            <th>fecha</th>
+                            <th>valor</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="matricula : ${matriculas}">
+                            <td th:text="${matricula.id}"></td>
+                            <td th:text="${matricula.estado}"></td>
+                            <td th:text="${matricula.valor}"></td>
+                            <td th:text="${matricula.fecha}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                </div>
+
+
+
+
+
+                <section class="wrapper">
+
+
+                </section>
+            </section>
+        </section>
+
+    </body>
+</html>

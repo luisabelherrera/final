@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <link rel="stylesheet" href="/CSSADMIN/bootstrap.css">
+        <link rel="stylesheet" href="/CSSADMIN/forms.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="/Profesor/Estilo/js/calificaciones.js"></script>
+        <link rel="stylesheet" href="/Profesor/Estilo/calificaciones.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-dfMQ5z7XXN8T1Q2cRKAlY5gCXY6uHDURvmyeLo6ezWOxw9j+9W7+q3K78tPq9Jj6" crossorigin="anonymous">
+        <script>
+
+        </script>
+
+
+    </head>
+    <body>
+        <section id="container" >
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                </div>      
+                <a href="ventanaprincipalAdmin.html" >
+
+                    <br>
+                    <b >VENTANA: PROFESOR</b>   
+                    <b class="visible-xs TextWhite"></b>
+                </a>
+                
+                <div class="top-menu text-center">
+                    <button class="notificaciones-btn" onclick="mostrarNotificaciones()">
+                        <img src="../../../static/imagenes/activo.png" alt="Notificaciones">
+                    </button>
+
+                    <div id="notificacionesPopup">
+                         <button class="cerrarNotificaciones" onclick="cerrarNotificaciones()">
+                        <img src="../../../static/imagenes/boton-x.png" alt="Notificaciones">
+                    </button>
+                        
+                        
+                        <h2>Notificaciones de Estudiantes</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID del Estudiante</th>
+                                    <th>Número de Identificación (CC)</th>
+                                    <th>Mensaje</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>001</td>
+                                    <td>123456789</td>
+                                    <td>Mensaje de notificación 1</td>
+                                </tr>
+                                <tr>
+                                    <td>002</td>
+                                    <td>987654321</td>
+                                    <td>Mensaje de notificación 2</td>
+                                </tr>
+                                <tr>
+                                    <td>003</td>
+                                    <td>567890123</td>
+                                    <td>Mensaje de notificación 3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </header>
+            <aside>
+                <div id="sidebar"  class="nav-collapse">
+                    <ul class="sidebar-menu nav">
+                        <li>
+                            <p class="text-center">
+                                <a>
+                                    <img src="/imagenes/R%20(2).png" class="img-circle" width="60">
+                                </a>
+                            </p>
+                            <h5 class="text-center TextWhite">@profesorcarlos</h5>
+                        </li>
+
+
+
+                        <li class="sub-menu">
+                            <a  href="principalprofesores.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">VentanaPrincipal</span>
+                            </a>
+                        </li>    
+
+
+                        <li class="sub-menu">
+                            <a href="/Horario" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Horario</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a  href="/Calificacion" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Calificaciones</span>
+                            </a>
+                        </li>            
+                        <li class="sub-menu">
+                            <a  href="/producto/formulario-crear" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">RecursoEducativos</span>
+                            </a>
+                        </li>      
+
+
+                        <li class="sub-menu">
+                            <a href="../../../static/index.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+
+                                <span class="TextWhite">VOLVER</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </aside>
+
+            <section id="main-content">
+
+
+                <br>
+                <br>
+                <div class="container">
+                    <h2>Informe de Notas</h2>
+                    <div class="container">
+                        <h2>Informe de Notas</h2>
+                        <form id="crearCalificacion" th:action="@{/Calificacion/crear1}" th:object="${calificacion}" method="post">
+                           <label for="studentId">ID de estudiante:</label>
+                            <input type="text" id="studentId" th:field="*{id}" required>
+
+                            <label for="period1Note">Nota Primer Periodo (1-5.0):</label>
+                            <input type="number" step="0.01" min="1" max="5" id="period1Note" th:field="*{calificacionPeriodo1}" required>
+
+                            <label for="period2Note">Nota Segundo Periodo (1-5.0):</label>
+                            <input type="number" step="0.01" min="1" max="5" id="period2Note" th:field="*{calificacionPeriodo2}" required>
+
+                            <label for="period1Note">Nota tercer Periodo (1-5.0):</label>
+                            <input type="number" step="0.01" min="1" max="5" id="period3Note" th:field="*{calificacionPeriodo3}" required>
+
+                            <input type="button" value="Calcular Nota Final" onclick="calcularNotaFinal();" />
+
+                            <label for="finalNote">Nota Final (1-5.0):</label>
+                            <input type="number" step="0.01" min="1" max="5" id="finalNote" th:field="*{notaFinal}" readonly>
+
+                            <label for="observations">Observaciones:</label>
+                            <input type="text" id="observations" th:field="*{descripcion}">
+
+                            <button type="submit">Guardar Calificación</button>
+                        </form>
+
+
+                        <div id="mensaje" class="alert mt-3 d-none"></div>
+
+                    </div>
+
+                    <script>
+                        function calcularNotaFinal() {
+                           var period1Note = parseFloat(document.getElementById('period1Note').value);
+                            var period2Note = parseFloat(document.getElementById('period2Note').value);
+                            var period3Note = parseFloat(document.getElementById('period3Note').value);
+
+                             var notaFinal = (period1Note + period2Note + period3Note) / 3;
+
+                              document.getElementById('finalNote').value = notaFinal.toFixed(2);
+
+                              var observaciones = document.getElementById('observations');
+                            if (notaFinal >= 3.0) {
+                                observaciones.value = 'Aprobado';
+                            } else {
+                                observaciones.value = 'Reprobado';
+                            }
+                        }
+                    </script>
+
+
+
+
+                </div>
+
+
+            </section>
+        </section>
+        <script>
+
+            const form = document.getElementById('crearCalificacion');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(form);
+
+                fetch('/Calificacion/crear1', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        } else {
+                            throw new Error('Error en la solicitud');
+                        }
+                    })
+                    .then(data => {
+                        const mensajeElement = document.getElementById('mensaje');
+                        mensajeElement.textContent = data;
+                        mensajeElement.className = 'alert alert-success';
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        const mensajeElement = document.getElementById('mensaje');
+                        mensajeElement.textContent = 'Error al realizar la solicitud.';
+                        mensajeElement.className = 'alert alert-danger';
+                    });
+            });
+        </script>
+    </body>
+</html>

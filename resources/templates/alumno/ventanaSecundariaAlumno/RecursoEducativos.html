@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <link rel="stylesheet" href="/CSSADMIN/bootstrap.css">
+        <link rel="stylesheet" href="/CSSADMIN/forms.css">
+        <link rel="stylesheet" href="../../../static/Alumno/Estilo/RecursoEducativos.css"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B4gt2EMW3vJToT/w8Hp8AzLJX0JduwJ65sKw2iCsflD+MZ7FsfkIY2K2S4S5Wf4e" crossorigin="anonymous">
+<style>
+    #text-container {
+        margin-top: -23px;
+    }
+
+</style>
+    </head>
+    <body>
+        <section id="container" >
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                </div>
+                <a href="ventanaprincipalAdmin.html">
+                    <br>
+                    <b></b>
+                    <b class="visible-xs TextWhite"></b>
+                </a>
+                <div class="top-menu text-center">
+                    <div id="text-container">
+                        <marquee direction="left" behavior="scroll" scrollamount="6" scrolldelay="30" style="font-size: 30px; color: #8e44ad; font-weight: bold;">
+                            &nbsp; Bienvenido Estudiante &nbsp; &nbsp; al portaledu &nbsp; &nbsp; donde podrás ver sus notas y interactuar con los profesores
+                        </marquee>
+                    </div>
+
+                </div>
+
+                    </div>
+
+                    </div>
+
+
+
+
+                </div>
+            </header>
+
+            <aside>
+                <div id="sidebar"  class="nav-collapse"><!-- ........Caja.Que.Contiene.Todo.El.Menu.Izq........... -->
+                    <ul class="sidebar-menu nav">
+                        <li>
+                            <p class="text-center">
+                                <a>
+                                    <img src="/imagenes/graduado%20(1).png" class="img-circle" width="60">
+                                </a>
+                            </p>
+                            <h5 class="text-center TextWhite">@estudiante</h5>
+                        </li>
+
+
+
+                        <li class="sub-menu">
+                            <a  href="../VentanaPrincipalAlumno.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">VentanaPrincipal</span>
+                            </a>
+                        </li>    
+
+
+                        <li class="sub-menu">
+                            <a href=".." >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Horario</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a  href="..ion.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">MisCalificaciones</span>
+                            </a>
+                        </li>   
+                        <li class="sub-menu">
+                            <a  href="../ventanaSecundariaAlumno/RecursoEducativos.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Recurso Educativo</span>
+                            </a>
+                        </li>            
+
+                        <li class="sub-menu">
+                            <a href="../../../static/index.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+
+                                <span class="TextWhite">VOLVER</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </aside>
+            <section id="main-content" class="container-fluid my-4">
+                <div class="text-center mb-4">
+                    <br>
+                    <b></b>
+                    <br>
+                    <b></b>
+                    <br>
+
+                    <h1 class="display-4">Lista de Recursos Educativos</h1>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead class="thead-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Autor</th>
+                            <th>Enlace</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="recurso : ${recurso}">
+                            <td th:text="${recurso.id}"></td>
+                            <td th:text="${recurso.nombreRecurso}"></td>
+                            <td th:text="${recurso.tipoRecurso}"></td>
+                            <td th:text="${recurso.descripcionRecurso}"></td>
+                            <td th:text="${recurso.autorRecurso}"></td>
+                            <td><a th:href="${recurso.enlaceRecurso}" target="_blank" class="btn btn-link">Ver enlace</a></td>
+                            <td>
+                                <a th:href="${recurso.archivoRecurso}" target="_blank" class="btn btn-secondary btn-sm">Descargar</a>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">Eliminar</button>
+                                <button class="btn btn-info btn-sm">Editar</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+
+
+
+            <section class="wrapper">
+
+
+                </section>
+            </section>
+        </section>
+    </body>
+</html>

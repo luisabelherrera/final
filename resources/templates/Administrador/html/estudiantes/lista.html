@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Dashboard">
+        <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/gestionarestudiante.css" />
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/ventanaadminprincipal.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/CSSADMIN/usuariollamardatos.css" />
+        <script src="/admin/js/barra.js"></script>
+        <link rel="stylesheet" href="/CSSADMIN/bootstrap.css">
+        <link rel="stylesheet" href="/CSSADMIN/forms.css">
+        <script src="/admin/js/filtrado.js"></script>
+
+
+        <title>VENTANA ADMINISTRADOR PRINCIPAL</title>
+    </head>
+
+    <body>
+        <section id="container" >
+            <header class="header black-bg">
+                <div class="sidebar-toggle-box">
+                </div>      
+                <a href="Principal" >
+
+                    <br>
+                    <b >VENTANA: ADMINISTRADOR</b>
+                    <b class="visible-xs TextWhite">ADV.TIME</b>
+                </a>
+                <div class="top-menu text-center">
+
+
+                </div>
+            </header>
+            <aside>
+                <div id="sidebar"  class="nav-collapse">
+                    <ul class="sidebar-menu nav">
+                        <li>
+                            <p class="text-center">
+                                <a>
+                                    <img src="/imagenes/R.jpeg" class="img-circle" width="60">
+                                </a>
+                            </p>
+                            <h5 class="text-center TextWhite">ADMINISTRADOR</h5>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">PANEL PRINCIPAL</span>
+                            </a>
+                            <ul>
+
+                                <li><a href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/AdministradorRoles.html">ADMINISTRATIVO ROLES</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="sub-menu">
+                            <a href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">ALUMNO</span>
+                            </a>
+                            <ul>
+                                     <li><a href="agregar" class="abc">Registrar Nuevo Alumno</a> <br></li>
+                                <li><a href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/ventanasecundariaalumno/modificar.html" class="abc">Modificar Alumno</a></li>
+                                <li><a href="lista" class="abc">Listado Alumnos</a></li>
+                                <li><a href="borrar" class="abc">Eliminar Alumnos</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="sub-menu">
+                            <a href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/ventanaprincipalAdmin.html">
+                                <i class="fa fa-dashboard TextWhite"></i>
+                                <span class="TextWhite">Profesor</span>
+                            </a>
+                            <ul>
+                                <li><a href="/profesor/formulario-crear" class="abe">Registrar Nuevo Profesor</a> <br></li>
+                                <li><a href="../admin/TablaAlumno.html" class="abe">Modificar Profesor</a></li>
+                                <li><a href="/profesor/lista" class="abe">Listado Profesor</a></li>
+                                <li><a href="../admin/TablaAlumno.html" class="abe">Eliminar Profesor</a></li>
+
+                            </ul>
+                        </li>
+
+                        <li class="sub-menu">
+                            <a href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/TablaMatricula.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Matricular</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a  href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/TablaNotas.html" >
+                                <i class="fa fa-desktop TextWhite"></i>
+                                <span class="TextWhite">Notas</span>
+                            </a>
+                        </li>            
+                        <li class="sub-menu">
+                            <a  class="active" href="../../../../../../proyectohtml-master/proyectohtml-master/public_html/admin/TablaCurso.html" >
+                                <i class="fa fa-cogs TextWhite"></i>
+                                <span class="TextWhite">Curso</span>
+                            </a>
+                        </li>
+
+
+                        <li class="sub-menu">
+                            <a href="index.html" >
+                                <i ></i>
+
+                                <span class="TextWhite">VOLVER</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </aside>
+
+            <section id="main-content">
+
+
+                <div id="main">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <span class="text1">GESTIONAR ALUMNOS</span>
+                    <span class="text2"></span>
+                    <br>
+                    <div id="cuadroDetalles" class="detalle-container">
+                        <div id="detallesTexto" class="detalle-info"></div>
+                    </div>
+
+                    <label for="filtroInput">Buscar por:</label>
+                    <select id="filtroSelect">
+                        <option value="ID_USUARIO">CC</option>
+                        <option value="ID_NOMBRE">ID NOMBRE</option>
+                    </select>
+
+
+                    <input type="text" id="filtroInput" onkeyup="filtrarTabla()" />
+                    <br>
+                    <br>
+
+                        <div class="table-responsive">
+                            <table id="tablaEstudiantes" class="table table-striped table-bordered">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cédula</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Fecha de Nacimiento</th>
+                                    <th>Género</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+                                    <th>Email</th>
+                                    <th>Edad</th>
+                                    <th>Acudiente</th>
+                                 </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="estudiante : ${estudiantes}">
+                                    <td th:text="${estudiante.id}"></td>
+                                    <td th:text="${estudiante.codigo}"></td>
+                                    <td th:text="${estudiante.nombre}"></td>
+                                    <td th:text="${estudiante.apellido}"></td>
+                                    <td th:text="${estudiante.fechaNacimiento}"></td>
+                                    <td th:text="${estudiante.genero}"></td>
+                                    <td th:text="${estudiante.dirrecion}"></td>
+                                    <td th:text="${estudiante.telefono}"></td>
+                                    <td th:text="${estudiante.email}"></td>
+                                    <td th:text="${estudiante.edad}"></td>
+                                    <td th:text="${estudiante.acudiente}"></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+
+                    </div>
+
+
+                    <section class="wrapper">
+
+
+                    </section>
+
+                </div>
+            </section>
+        </section>
+
+    </body>
+</html>

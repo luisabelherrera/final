@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Getting Started: Handling Form Submission</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="/CSS/diseñoRegistro.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/inicio/registro/Registro.js"/>
+        <link rel="stylesheet" href="/inicio/registro/Registro.css"/>
+    </head>
+
+    <body>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Registrar Estudiante</h3>
+
+
+                        <form id="crearEstudianteForm" method="post" action="#" th:action="@{/estudiante/crear1}" th:object="${estudiante}">
+
+
+                            <div class="mb-3">
+                                <label for="codigo" class="form-label">cedula</label>
+                                <input type="text" th:field="*{codigo}" class="form-control" id="codigo" placeholder="Ingrese el nombre del estudiante" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Ingrese el nombre del estudiante" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" th:field="*{apellido}" class="form-control" id="apellido" placeholder="Ingrese el apellido del estudiante" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" th:field="*{fechaNacimiento}" class="form-control" id="fechaNacimiento" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="genero" class="form-label">Género</label>
+                                <input type="text" th:field="*{genero}" class="form-control" id="genero" placeholder="Ingrese el género">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="direccion" class="form-label">Dirección</label>
+                                <input type="text" th:field="*{dirrecion}" class="form-control" id="direccion" placeholder="Ingrese la dirección">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="telefono" class="form-label">Teléfono</label>
+                                <input type="tel" th:field="*{telefono}" class="form-control" id="telefono" placeholder="Ingrese el teléfono">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Ingrese el correo electrónico">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="edad" class="form-label">Edad</label>
+                                <input type="number" th:field="*{edad}" class="form-control" id="edad" placeholder="Ingrese la edad">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="acudiente" class="form-label">Acudiente</label>
+                                <input type="text" th:field="*{acudiente}" class="form-control" id="acudiente" placeholder="Ingrese el nombre del acudiente">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Crear</button>
+                            <br>
+                            <br>
+                            <a href="/index.html" class="btn btn-secondary">Volver</a>
+
+                            <div id="mensaje" class="alert mt-3 d-none"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <script>
+
+        const form = document.getElementById('crearEstudianteForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(form);
+
+            fetch('/estudiante/crear1', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        throw new Error('Error en la solicitud');
+                    }
+                })
+                .then(data => {
+                    const mensajeElement = document.getElementById('mensaje');
+                    mensajeElement.textContent = data;
+                    mensajeElement.className = 'alert alert-success';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const mensajeElement = document.getElementById('mensaje');
+                    mensajeElement.textContent = 'Error al realizar la solicitud.';
+                    mensajeElement.className = 'alert alert-danger';
+                });
+        });
+    </script>
+    </body>
+</html>
