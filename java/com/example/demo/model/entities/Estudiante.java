@@ -3,33 +3,51 @@ package com.example.demo.model.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Setter
 @Getter
-@Table(name = "estudiante")
+@Table(name = "estudiantes")
 public class Estudiante {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudiante_seq")
-    @SequenceGenerator(name = "estudiante_seq", sequenceName = "estudiante_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estudianteSeq")
     private Long id;
 
-    private int codigo;
+    private String nombreCompleto;
+    private String fechaNacimiento;
+    private String dirección;
+    private String teléfono;
+    private String correoElectrónico;
+    private String género;
+    private String nacionalidad;
+
+
+   // AQUI COMIENZA LA FOTO PARA EL ESTUDIANTE
     private String nombre;
-    private String apellido;
-    @Column(name = "fecha_nacimiento")
-    private LocalDate fechaNacimiento;
 
-    private String genero;
-    private String dirrecion;
-    private String telefono;
-    private String email;
-    private int edad;
-    private String acudiente;
+    @Lob
+    private byte[] datos;
+
+    private String formato;
+
+    // hasta aca
 
 
 
+    @OneToMany(mappedBy = "estudiante")
+    private List<Matricula> matriculas;
+
+
+    @Lob
+    @Column
+    private byte[] imageData;
+
+    public String generateBase64Image() {
+        return Base64.encodeBase64String(this.imageData);
+    }
 }

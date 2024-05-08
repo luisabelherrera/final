@@ -8,19 +8,26 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "calificacion")
+@Table(name = "calificaciones")
+@SequenceGenerator(name = "calificacionSeq", sequenceName = "calificacion_seq", allocationSize = 1)
 public class Calificacion {
 
-
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calificacion_seq")
-    @SequenceGenerator(name = "calificacion_seq", sequenceName = "calificacion_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calificacionSeq")
+    private Long id;
 
-    private int id;
-    private int calificacionPeriodo1;
-    private double calificacionPeriodo2;
-    private double calificacionPeriodo3;
-    private double notaFinal;
-    private String descripcion;
+    private double valorCalificacion;
+    private String comentario;
+
+
+    @ManyToOne
+    @JoinColumn(name = "periodo_id")
+    private Periodo periodo;
+
+
+    @ManyToOne
+    @JoinColumn(name = "asignatura_cursada_id")
+    private AsignaturaCursada asignaturaCursada;
+
+
 }

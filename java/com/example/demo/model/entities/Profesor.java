@@ -1,26 +1,39 @@
 package com.example.demo.model.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "profesor")
+@Table(name = "profesores")
 public class Profesor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profesor_seq")
-    @SequenceGenerator(name = "profesor_seq", sequenceName = "profesor_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "profesoresSeq")
     private Long id;
-    private int codigo;
-    private String nombre;
-    private String apellido;
+
+    @NotNull
+    private String nombreCompleto;
+    @NotNull
+    private LocalDate fechaNacimiento;
+    @NotNull
+    private String direccion;
+    @NotNull
     private String telefono;
-    private String celular;
-    private String dirrecion;
+    @NotNull
+    private String correoElectronico;
+    @NotNull
     private String genero;
-    private String email;
+    @NotNull
+    private String nacionalidad;
+
+
+    @OneToMany(mappedBy = "profesor")
+    private List<Asignatura> asignaturas;
 }

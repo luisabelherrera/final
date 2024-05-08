@@ -1,64 +1,89 @@
 package com.example.demo.controllers;
 
-
+import com.example.demo.model.entities.Estudiante;
 import com.example.demo.model.entities.Profesor;
+import com.example.demo.services.AsignaturaCursadaService;
 import com.example.demo.services.ProfesorService;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
+import java.util.Optional;
+
 @Controller
+@RequestMapping("/profesores")
 public class ProfesorController {
 
+    private final ProfesorService profesorService;
+
     @Autowired
-    private ProfesorService profesorService;
+    public ProfesorController(ProfesorService profesorService) {
+        this.profesorService = profesorService;
+    }
 
-
-    @RequestMapping("/profesor/lista")
-    public String lista2(Model modelo) {
-        Iterable<Profesor> profesor = profesorService.listar();
-        modelo.addAttribute("profesor", profesor);
+    @GetMapping("/lista")
+    public String listarProfesores(@RequestParam(value="filtro", required=false) String filtro, Model model) {
+        List<Profesor> profesores;
+        if (filtro != null && !filtro.isEmpty()) {
+            profesores = profesorService.filtrarPorNombre(filtro);
+        } else {
+            profesores = (List<Profesor>) profesorService.listar();
+        }
+        model.addAttribute("profesor", profesores);
+        model.addAttribute("filtro", filtro);
         return "Administrador/html/profesores/TablaProfesor";
-
     }
 
-    @RequestMapping("/profesor/formulario-crear")
-    public String crearForm2(Model modelo) {
-        modelo.addAttribute("profesor", new Profesor());
+
+    @GetMapping("/crear")
+    public String mostrarFormularioCreacion(Model model) {
+        model.addAttribute("profesor", new Profesor());
         return "Administrador/html/profesores/agregarProfesor";
-
     }
 
-    @GetMapping({"/PrincipalProfesor","/Horario","/Calificacion"} )
-    public String mostrarFormularioCreacion2(Model modelo, HttpServletRequest request) {
-        modelo.addAttribute("profesor", new Profesor());
-        String requestURI = request.getRequestURI();
-        if (requestURI.equals("/PrincipalProfesor")) {
-            return "profesores/ventanasecundariaprofesores/principalprofesores";
-        }
-        else if (requestURI.equals("/Horario")) {
-            return "profesores/ventanasecundariaprofesores/Horario";
-        }
-        else if (requestURI.equals("/Calificacion")) {
-            return "profesores/ventanasecundariaprofesores/Calificaciones";
-        }
-        return "crearEstudiante";
+    @PostMapping("/crear")
+    public RedirectView crearProfesor(@ModelAttribute Profesor profesor, RedirectAttributes redirectAttributes) {
+        profesorService.crear(profesor);
+        redirectAttributes.addFlashAttribute("mensaje", "Profesor creado correctamente");
+        return new RedirectView("/profesores/lista");
     }
 
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditarProfesor(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        Optional<Profesor> profesorOptional = profesorService.obtenerPorId(id);
 
-    @PostMapping("/profesor/crear")
-    public RedirectView crear2(@ModelAttribute Profesor profesor, Model model) {
-        profesorService.registrar(profesor);
-        model.addAttribute("profesor", profesor);
-        return new RedirectView("/profesor/lista");
+        if (profesorOptional.isPresent()) {
+            model.addAttribute("profesor", profesorOptional.get());
+            return "Administrador/html/profesores/editarProfesor";
+        } else {
+            redirectAttributes.addFlashAttribute("error", "El profesor con ID " + id + " no existe.");
+            return "redirect:/profesores/lista";
+        }
     }
 
+    @PostMapping("/actualizar/{id}")
+    public RedirectView actualizarProfesor(@PathVariable Long id, @ModelAttribute Profesor profesorDetalles, RedirectAttributes redirectAttributes) {
+        try {
+            profesorService.actualizar(id, profesorDetalles);
+            redirectAttributes.addFlashAttribute("mensaje", "Profesor actualizado correctamente");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al actualizar el profesor");
+        }
+        return new RedirectView("/profesores/lista");
+    }
 
-
+    @GetMapping("/eliminar/{id}")
+    public RedirectView eliminarProfesor(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        try {
+            profesorService.eliminar(id);
+            redirectAttributes.addFlashAttribute("mensaje", "Profesor eliminado correctamente");
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar el profesor");
+        }
+        return new RedirectView("/profesores/lista");
+    }
 }

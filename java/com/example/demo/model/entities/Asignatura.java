@@ -4,22 +4,36 @@ package com.example.demo.model.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import com.example.demo.model.entities.Profesor;
+
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "asignatura")
+@Table(name = "asignaturas")
+@SequenceGenerator(name = "asignaturaSeq", sequenceName = "asignatura_seq", allocationSize = 1)
 public class Asignatura {
-
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "asignatura_seq")
-    @SequenceGenerator(name = "asignatura_seq", sequenceName = "asignatura_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "asignaturaSeq")
+    private Long id;
 
-    private long id;
-    private String codigo;
+
     private String nombre;
-    private String grado_curso;
-    private int profesor;
+
+    private String codigo;
+
+
     private String descripcion;
+
+    private int creditos;
+
+    @OneToMany(mappedBy = "asignatura")
+    private List<AsignaturaCursada> asignaturasCursadas;
+
+    @ManyToOne
+    @JoinColumn(name = "profesor_id")
+    private Profesor profesor;
+
+
 }
