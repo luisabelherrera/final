@@ -1,0 +1,9 @@
+.titulo-profesional {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    color: #333;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
